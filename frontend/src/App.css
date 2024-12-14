@@ -1,0 +1,331 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #0b5b03;
+  color: #e0e0e0;
+}
+
+.dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboard h1 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.sensors-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.sensor-display {
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #333;
+}
+
+.sensor-display:nth-child(1) {
+  border: 2px solid #FF5722; /* Orange for Temperature */
+  box-shadow: 0 5px 15px rgba(255, 87, 34, 0.5);
+}
+
+.sensor-display:nth-child(2) {
+  border: 2px solid #2196F3; /* Blue for Humidity */
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.5);
+}
+
+.sensor-display:nth-child(3) {
+  border: 2px solid #4CAF50; /* Green for Soil Moisture */
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.5);
+}
+
+.sensor-display:nth-child(4) {
+  border: 2px solid #00BFFF; /* Aqua for Rain Intensity */
+  box-shadow: 0 5px 15px rgba(0, 191, 255, 0.5);
+}
+
+.sensor-display h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.gauge-section {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.circular-gauge-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gauge-icon {
+  position: absolute;
+  left: -50px;
+  z-index: 10;
+}
+
+.circular-gauge {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  outline: none;
+  border-radius: 500%;
+  box-shadow: 0 5px 15px rgba(23, 11, 156, 0.5);
+}
+
+.sensor-display:nth-child(1) .circular-gauge {
+  box-shadow: 0 5px 15px rgba(255, 87, 34, 0.5);
+}
+
+.sensor-display:nth-child(2) .circular-gauge {
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.5);
+}
+
+.sensor-display:nth-child(3) .circular-gauge {
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.5);
+}
+
+.sensor-display:nth-child(4) .circular-gauge {
+  box-shadow: 0 5px 15px rgba(0, 191, 255, 0.5);
+}
+
+.gauge-svg {
+  transform: rotate(-180deg);
+}
+
+.gauge-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.graph-section {
+  color: #ffffff;
+}
+
+/* Recharts customization */
+.recharts-cartesian-grid-horizontal line, 
+.recharts-cartesian-grid-vertical line {
+  stroke: #333;
+}
+
+.recharts-xAxis .recharts-text, 
+.recharts-yAxis .recharts-text {
+  fill: #888;
+}
+
+/* Port Selector Styles */
+.port-selector {
+  background: linear-gradient(145deg, #031527, #002041);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  color: white;
+  font-family: "Arial", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.port-selector:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.port-selector-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.port-selector-header h3 {
+  margin-left: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.port-selector-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Space between dropdown and button */
+}
+
+.port-selector-dropdown {
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  color: #1c75d0;
+  font-size: 1em;
+  margin-bottom: 20px; /* Adds spacing below dropdown */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.port-selector-dropdown:focus {
+  outline: none;
+  border: 2px solid #1e90ff;
+  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.5);
+}
+
+.connect-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #007bff, #0056b3);
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 20px; /* Adds spacing above the button */
+}
+
+.connect-button:hover {
+  background: linear-gradient(140deg, #0056b3, #003f80);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.connect-button:active {
+  transform: scale(0.95);
+}
+
+.connect-button.disabled {
+  background: #cccccc;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.connection-status {
+  margin-top: 20px;
+  margin-left: 250px;
+  margin-right: 250px;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.connection-status.connected {
+  background-color: #0b005c;
+  color: white;
+}
+
+.connection-status.connection-failed,
+.connection-status.connection-error {
+  background-color: #f44336;
+  color: white;
+}
+
+.no-port-selected {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+}
+
+.manual-control {
+  padding: 12px 2px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #d66f1a, #0056b3);
+  color: rgb(241, 240, 249);
+  font-size: 0.7cm;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 20px; /* Adds spacing above the button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.manual-control input[type="checkbox"] {
+  margin-left: 15px; /* Adds spacing between the label and checkbox */
+  appearance: none; /* Remove the default checkbox style */
+  width: 25px; /* Bulb size */
+  height: 25px; /* Bulb size */
+  background-color: #ccc; /* Off state color */
+  margin-left: 40px;
+  border: 2px solid #999;
+  border-radius: 50%; /* Make it circular */
+  cursor: pointer;
+  position: relative;
+  left: -28px;
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.manual-control input[type="checkbox"]:checked {
+  background-color: #f4d03f; /* Yellow color for ON state */
+  box-shadow: 0 0 10px 5px rgba(255, 223, 0, 0.7); /* Glow effect */
+}
+
+.manual-control input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 11px;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 5px;
+  background-color: #666;
+  border-radius: 5px; /* Base of the bulb */
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+
+
+
+
+.manual-control .led-controls button {
+  background-color: black; /* Button background color */
+  color: rgb(88, 156, 240); /* Button text color */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Padding for size */
+  margin: 5px; /* Space between buttons */
+  cursor: pointer; /* Pointer cursor for better UX */
+  font-size: 14px; 
+  font-weight: bold;/* Adjust font size */
+  transition: transform 1.5s; /* Add a slight effect */
+}
+
+.manual-control .led-controls button:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+  opacity: 0.9; /* Reduce opacity for a subtle effect */
+}
+

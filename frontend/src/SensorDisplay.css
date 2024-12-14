@@ -1,0 +1,25 @@
+.sensor-display {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .sensor-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .sensor-header h4 {
+    color: #ffffff;
+  }
+  
+  .sensor-display p {
+    color: #e0e0e0;
+  }
+  
